@@ -12,28 +12,43 @@ class Person {       // The class
 		string getEID(void);
 		double getCurrentSalary(void);
 		double getKPI(void);
-		string setEID();
-		double setSalary();
-		double setKPI();
-		Person(double, double);
+		void setEID(string);
+		void setSalary(double);
+		void setKPI(double);
+		//Person(double, double);
+		Person(string eid, double salary, double kpivalue) {
+			EID = eid;
+			currentSalary = salary;
+			KPI = kpivalue;
+		}
 	private:
 		string EID;
 		double currentSalary, KPI;
 };
 
-string Person::setEID() {
+//Person::Person(double salary,double kpi) {
+//	cout << "The employee ID is " << EID << endl;
+//	cout << "The current salary is RM" << currentSalary << endl;
+//	cout << "The KPI of the employee is " << KPI << endl;
+//}
+
+
+void Person::setEID(string eid) {
 	cout << "Please enter employee ID: ";
-	cin >> EID;
+	cin >> eid;
+	EID = eid;
 }
 
-double Person::setSalary() {
+void Person::setSalary(double salary) {
 	cout << "Please enter the current employee ID: ";
-	cin >> currentSalary;
+	cin >> salary;
+	currentSalary = salary;
 }
 
-double Person::setKPI() {
+void Person::setKPI(double kpivalue) {
 	cout << "Please enter the current employee KPI: ";
-	cin >> KPI;
+	cin >> kpivalue;
+	KPI = kpivalue;
 }
 
 string Person::getEID(void) {
@@ -48,29 +63,21 @@ double Person::getKPI(void) {
 	return KPI;
 }
 
-Person::Person(double salary, double kpi) {
-	cout << "The employee ID is " << EID << endl;
-	cout << "The current salary is RM" << currentSalary << endl;
-	cout << "The KPI of the employee is " << KPI << endl;
-
-}
-
-
 //here i see the code from stackoverflow, i modify but kept on saying my class has no constructor. not sure what happen
-int creatingobj() {
-	Person** PersonArrayArray = new Person * [100]; // where n is number of arrays to create
-	for (int i = 0; i < 100; ++i)
-	{
-		PersonArrayArray[i] = new Person[25];
-	}
-
-	// for freeing
-	for (int i = 0; i < 100; ++i)
-	{
-		delete[] PersonArrayArray[i];
-	}
-	delete[] PersonArrayArray;
-}
+//int creatingobj() {
+//	Person** PersonArrayArray = new Person * [100]; // where n is number of arrays to create
+//	for (int i = 0; i < 100; ++i)
+//	{
+//		PersonArrayArray[i] = new Person(25);
+//	}
+//
+//	// for freeing
+//	for (int i = 0; i < 100; ++i)
+//	{
+//		delete[] PersonArrayArray[i];
+//	}
+//	delete[] PersonArrayArray;
+//}
 
 
 int main() {
@@ -78,7 +85,10 @@ int main() {
 	double salary;
 	double kpivalue;
 
-	Person employee1(eid, salary, kpivalue);
-
+	Person employee1("qwer", 10000, 1.2);
+	//employee1.setEID("qwe");
+	//employee1.setKPI( 1.2);
+	//employee1.setSalary(10000);
+	cout << employee1.getCurrentSalary() << endl;
 
 }
